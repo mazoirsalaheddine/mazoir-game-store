@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import "./AddArticle.css"; // استيراد الـ CSS من الملف الجديد
 
 function AddArticle() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [status, setStatus] = useState("published"); // published أو draft (حسب الـ Enum لي عندك سميتو images ف الـ migration)
+  const [status, setStatus] = useState("published"); 
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   
@@ -23,7 +24,7 @@ function AddArticle() {
     const formData = new FormData();
     formData.append("title", title);
     formData.append("content", content);
-    formData.append("images", status); // حيت فـ الـ Migration سميتي الحقل 'images' كـ enum
+    formData.append("images", status); 
     if (image) formData.append("image", image);
 
     const token = localStorage.getItem("token");
@@ -36,7 +37,7 @@ function AddArticle() {
         }
       });
       toast.success("تم حفظ المقال بنجاح!");
-      navigate("/news"); // العودة لصفحة الأخبار
+      navigate("/news"); 
     } catch (error) {
       toast.error("حدث خطأ أثناء الحفظ.");
       console.log(error);
@@ -46,43 +47,44 @@ function AddArticle() {
   };
 
   return (
-    <div style={styles.container}>
+    <div className="add-article-container">
       <Toaster />
       <h2>✍️ إنشاء مقال جديد</h2>
-      <form onSubmit={handlePublish} style={styles.form}>
-        <input type="text" placeholder="عنوان المقال..." value={title} onChange={e => setTitle(e.target.value)} style={styles.input} />
+      <form onSubmit={handlePublish} className="article-form">
+        <input 
+          type="text" 
+          placeholder="عنوان المقال..." 
+          value={title} 
+          onChange={e => setTitle(e.target.value)} 
+          className="form-input" 
+        />
         
-        <textarea placeholder="محتوى المقال..." value={content} onChange={e => setContent(e.target.value)} style={styles.textarea} />
+        <textarea 
+          placeholder="محتوى المقال..." 
+          value={content} 
+          onChange={e => setContent(e.target.value)} 
+          className="form-textarea" 
+        />
         
-        <div style={styles.row}>
+        <div className="form-row">
           <label>صورة المقال: </label>
           <input type="file" accept="image/*" onChange={e => setImage(e.target.files[0])} />
         </div>
 
-        <div style={styles.row}>
+        <div className="form-row">
           <label>حالة النشر: </label>
-          <select value={status} onChange={e => setStatus(e.target.value)} style={styles.select}>
+          <select value={status} onChange={e => setStatus(e.target.value)} className="form-select">
             <option value="published">منشور (Published)</option>
             <option value="draft">مسودة (Draft)</option>
           </select>
         </div>
 
-        <button type="submit" disabled={loading} style={styles.btn}>
+        <button type="submit" disabled={loading} className="submit-btn">
           {loading ? "جاري الحفظ..." : "حفظ المقال"}
         </button>
       </form>
     </div>
   );
 }
-
-const styles = {
-  container: { maxWidth: "600px", margin: "40px auto", padding: "20px", background: "#fff", borderRadius: "12px", border: "1px solid #ddd", direction: "rtl", fontFamily: "sans-serif" },
-  form: { display: "flex", flexDirection: "column", gap: "15px" },
-  input: { padding: "10px", fontSize: "16px", borderRadius: "6px", border: "1px solid #ccc" },
-  textarea: { padding: "10px", fontSize: "16px", height: "200px", borderRadius: "6px", border: "1px solid #ccc", resize: "none" },
-  row: { display: "flex", alignItems: "center", gap: "15px" },
-  select: { padding: "8px", borderRadius: "6px" },
-  btn: { padding: "12px", background: "#1877f2", color: "#fff", border: "none", borderRadius: "6px", fontSize: "16px", fontWeight: "bold", cursor: "pointer" }
-};
 
 export default AddArticle;
