@@ -1,0 +1,203 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: #f9fafb;
+  color: #111827;
+}
+
+/* ===== LAYOUT ===== */
+.home-wrapper {
+  width: 100%;
+}
+
+/* ===== HERO ===== */
+.hero-section {
+  padding: 80px 20px;
+  text-align: center;
+  background: #ffffff;
+  border-bottom: 1px solid #eee;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+/* الـ Badge المطور والمعدل لترحيب المستخدم بشكل متناسق */
+.badge-glow {
+  display: inline-block;
+  background: #eef2ff; /* خلفية زرقاء خفيفة متناسقة مع ستايلك */
+  color: #4f46e5;      /* لون الخط الأساسي */
+  border: 1px solid rgba(79, 70, 229, 0.2); /* إطار خفيف جداً يبرز حواف الاسم */
+  padding: 8px 18px;   /* مساحة داخلية مريحة للاسم */
+  border-radius: 50px; /* حواف دائرية مثالية */
+  font-size: 14.5px;
+  font-weight: 700;    /* خط سميك ليركز عليه المستخدم */
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.06); /* ظل ناعم وخفيف جداً */
+  
+  /* الحماية الديناميكية لاسم المستخدم */
+  width: fit-content;
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hero-title {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.text-gradient {
+  color: #4f46e5;
+}
+
+.hero-desc {
+  color: #6b7280;
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+
+/* ===== BUTTONS ===== */
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-neon {
+  background: #4f46e5;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.btn-neon:hover {
+  background: #4338ca;
+}
+
+.btn-outline {
+  border: 1px solid #d1d5db;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #111;
+}
+
+.btn-outline:hover {
+  background: #f3f4f6;
+}
+
+.btn-neon.large {
+  padding: 12px 28px;
+}
+
+/* ===== FEATURES ===== */
+.features-grid {
+  padding: 60px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.feature-card {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  text-align: center;
+  transition: 0.2s;
+}
+
+.feature-card:hover {
+  border-color: #ddd;
+}
+
+.feature-card.highlight {
+  border-color: #4f46e5;
+}
+
+.icon-box {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+/* ===== GAMES ===== */
+.games-preview {
+  padding: 60px 20px;
+  background: #f9fafb;
+}
+
+.section-header {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.link-more {
+  color: #4f46e5;
+  text-decoration: none;
+}
+
+.grid-container {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.game-category-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  transition: 0.2s;
+}
+
+.game-category-card:hover {
+  border-color: #ddd;
+}
+
+/* ===== CTA ===== */
+.bottom-cta {
+  padding: 80px 20px;
+  text-align: center;
+  background: white;
+  border-top: 1px solid #eee;
+}
+
+.cta-content h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.cta-content p {
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+}

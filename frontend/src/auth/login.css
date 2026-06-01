@@ -1,0 +1,133 @@
+/* الحاوية الرئيسية */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  direction: rtl;
+  font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
+  background-color: #f8f9fa; /* لون خلفية هادئ */
+}
+
+/* الكرت المربع */
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  background: #ffffff;
+  padding: 40px;
+  /* حواف حادة جداً */
+  border-radius: 0px; 
+  /* حدود خفيفة بدلاً من الظل الكثيف */
+  border: 2px solid #1a1a1a;
+  /* ظل صلب (Hard Shadow) ليعطي ستايل عصري */
+  box-shadow: 10px 10px 0px #1a1a1a;
+}
+
+/* العنوان */
+.login-title {
+  text-align: right;
+  color: #1a1a1a;
+  font-size: 1.6rem;
+  font-weight: 900;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.login-subtitle {
+  text-align: right;
+  color: #666;
+  font-size: 0.85rem;
+  margin-bottom: 30px;
+}
+
+/* الفورم */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input-group label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-transform: uppercase;
+}
+
+/* الحقول المربعة */
+.login-input {
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 0px; /* إزالة الانحناء تماماً */
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.login-input:focus {
+  border-color: #1a1a1a;
+  background-color: #fff;
+}
+
+/* حالة الخطأ */
+.input-error {
+  border-color: #ff0000 !important;
+}
+
+.error-text {
+  color: #ff0000;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+/* الزر المربع */
+.login-btn {
+  background: #1a1a1a;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 0px; /* حواف حادة */
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+.login-btn:hover:not(:disabled) {
+  background: #333;
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px #6c5ce7; /* لمسة لون عند الحوم */
+}
+
+.login-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* الفوتر */
+.login-footer {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 0.85rem;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: #1a1a1a;
+  font-weight: 900;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-right: 5px;
+}

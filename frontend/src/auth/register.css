@@ -1,0 +1,144 @@
+/* استيراد خط يتناسب مع الستايل المربع والقوي */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+
+/* الحاوية الرئيسية */
+.register-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 95vh;
+  direction: rtl;
+  font-family: 'Cairo', Tahoma, sans-serif;
+  background-color: #f8f9fa; /* نفس لون خلفية اللوجين الهادئ */
+  padding: 30px 20px;
+  box-sizing: border-box;
+}
+
+/* الكرت المربع (نفس لوجين والـ Add Account) */
+.register-form {
+  width: 100%;
+  max-width: 400px;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 0px; /* حواف حادة جداً */
+  border: 2px solid #1a1a1a; /* حدود خفيفة سميكة */
+  box-shadow: 10px 10px 0px #1a1a1a; /* ظل صلب (Hard Shadow) */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* العنوان الرئيسي */
+.register-title {
+  text-align: right;
+  color: #1a1a1a;
+  font-size: 1.6rem;
+  font-weight: 900;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+/* مجموعات الإدخال */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.input-group label.file-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-transform: uppercase;
+}
+
+/* الحقول المربعة والقوائم المنسدلة */
+.register-input,
+.register-select,
+.register-input-file {
+  font-family: 'Cairo', sans-serif;
+  padding: 12px;
+  border: 2px solid #1a1a1a; /* نفس سمك حدود الكرت ليتناسق التصميم */
+  border-radius: 0px; /* إزالة الانحناء تماماً */
+  font-size: 0.95rem;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  outline: none;
+  transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* عند التركيز على الحقول (Focus) */
+.register-input:focus,
+.register-select:focus {
+  background-color: #fff;
+  box-shadow: 4px 4px 0px #1a1a1a; 
+  transform: translate(-2px, -2px);
+}
+
+/* تخصيص حقل رفع الملف */
+.register-input-file {
+  background-color: #fafafa;
+  cursor: pointer;
+  padding: 8px 12px;
+}
+
+/* حالة الأخطاء (إذا كانت الحدود باللون الأحمر) */
+.register-input.input-error {
+  border-color: #ff0000 !important;
+  box-shadow: 4px 4px 0px #ff0000 !important;
+}
+
+.error-text {
+  color: #ff0000;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+/* الزر المربع بستايل الـ Neo-Brutalism */
+.register-btn {
+  font-family: 'Cairo', sans-serif;
+  background: #1a1a1a;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 0px; /* حواف حادة */
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 10px;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+/* تأثير الحوم على الزر وظهور الظل البنفسجي العصري */
+.register-btn:hover:not(:disabled) {
+  background: #333;
+  transform: translate(-3px, -3px);
+  box-shadow: 5px 5px 0px #6c5ce7; /* لمسة لون بنفسجي مميزة عند الحوم مثل اللوجين */
+}
+
+/* زر معطل أثناء الرفع أو التحميل */
+.register-btn:disabled {
+  background: #ccc;
+  border: 2px solid #999;
+  color: #666;
+  cursor: not-allowed;
+}
+
+/* تعديلات شاشات الهواتف */
+@media (max-width: 480px) {
+  .register-form {
+    padding: 30px 20px;
+  }
+  .register-title {
+    font-size: 1.5rem;
+  }
+}

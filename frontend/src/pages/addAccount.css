@@ -1,0 +1,193 @@
+/* استيراد خط يتناسب مع الستايل المربع والقوي */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+
+.add-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 95vh;
+  direction: rtl;
+  font-family: 'Cairo', sans-serif;
+  background-color: #f8f9fa; /* لون خلفية هادئ ومحايد */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* الكرت المربع بستايل الـ Neo-Brutalism */
+.form-card {
+  width: 100%;
+  max-width: 550px;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 0px; /* حواف حادة جداً */
+  border: 2px solid #1a1a1a; /* حدود سميكة وواضحة */
+  box-shadow: 10px 10px 0px #1a1a1a; /* ظل صلب (Hard Shadow) مائل */
+  box-sizing: border-box;
+}
+
+/* العنوان الرئيسي */
+.form-card h2 {
+  text-align: right;
+  color: #1a1a1a;
+  font-size: 1.6rem;
+  font-weight: 900;
+  margin-bottom: 30px;
+  letter-spacing: -1px;
+}
+
+/* تقسيم العناصر على سطر واحد للهواتف الكبيرة والحواسيب */
+.row {
+  display: flex;
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.input-group label {
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: #1a1a1a;
+}
+
+/* الحقول المربعة تماماً والـ Select ومربع النص */
+.form-card input[type="text"],
+.form-card input[type="number"],
+.form-card input[type="tel"],
+.form-card select,
+.form-card textarea {
+  font-family: 'Cairo', sans-serif;
+  padding: 12px;
+  border: 2px solid #1a1a1a; /* نفس سمك حدود الكرت ليتناسق التصميم */
+  border-radius: 0px; /* إزالة الانحناء تماماً */
+  font-size: 0.95rem;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  outline: none;
+  transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* عند الضغط على الحقول */
+.form-card input:focus,
+.form-card select:focus,
+.form-card textarea:focus {
+  background-color: #fff;
+  /* تأثير إزاحة بسيط يعطي حركية ممتازة للحقل النشط */
+  box-shadow: 4px 4px 0px #1a1a1a; 
+  transform: translate(-2px, -2px);
+}
+
+.form-card textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* صندوق رفع الصور المربع */
+.upload-box {
+  position: relative;
+  border: 2px dashed #1a1a1a; /* خط متقطع حاد */
+  border-radius: 0px;
+  padding: 20px;
+  text-align: center;
+  background-color: #fafafa;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.upload-box:hover {
+  background-color: #f1f0ff; /* تلميح لوني خفيف عند الحوم */
+  border-style: solid;
+}
+
+.upload-box input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.upload-box label {
+  cursor: pointer;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+/* حاوية معاينة الصور المربعة */
+.preview-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.preview-item {
+  width: 75px;
+  height: 75px;
+  border-radius: 0px; /* صور مربعة حادة */
+  border: 2px solid #1a1a1a;
+  overflow: hidden;
+  box-shadow: 3px 3px 0px #1a1a1a;
+}
+
+.preview-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* الزر المربع الصلب مع تأثير الحوم */
+.submit-btn {
+  font-family: 'Cairo', sans-serif;
+  background: #1a1a1a;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 0px; /* حواف حادة */
+  font-size: 1rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #222;
+  /* تأثير حركي يندمج مع ظهور ظل ملون (بنفسجي عصري) */
+  transform: translate(-4px, -4px);
+  box-shadow: 6px 6px 0px #6c5ce7; 
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translate(0px, 0px);
+  box-shadow: 0px 0px 0px #1a1a1a;
+}
+
+.submit-btn:disabled {
+  background: #ccc;
+  border: 2px solid #999;
+  color: #666;
+  cursor: not-allowed;
+}
+
+/* توافق التصميم مع الشاشات الصغيرة والهواتف */
+@media (max-width: 500px) {
+  .row {
+    flex-direction: column;
+    gap: 0;
+  }
+  .form-card {
+    padding: 25px 20px;
+  }
+}

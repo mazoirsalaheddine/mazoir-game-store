@@ -1,0 +1,13 @@
+src
+│
+├── components
+│   ├── Navbar.jsx
+│
+├── pages
+│   ├── Home.jsx
+│   ├── Games.jsx
+│   ├── News.jsx
+│   ├── Store.jsx
+│
+├── App.jsx
+└── main.jsx

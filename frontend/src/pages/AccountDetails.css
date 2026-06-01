@@ -1,0 +1,278 @@
+/* ==========================================================================
+   ملف تنسيق صفحة تفاصيل الحساب الكاملة (accountDetails.css)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+
+.details-container {
+  font-family: 'Cairo', sans-serif;
+  background-color: #f0f2f5;
+  min-height: 100vh;
+  padding: 30px 6%;
+  box-sizing: border-box;
+  direction: rtl;
+}
+
+/* زر الرجوع للخلف */
+.back-action-btn {
+  font-family: 'Cairo', sans-serif;
+  background: #ffffff;
+  color: #1e293b;
+  border: 1px solid #cbd5e1;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+  transition: all 0.2s ease;
+}
+
+.back-action-btn:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+
+/* توزيع الشاشات */
+.details-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+/* ==========================================================================
+   معرض الصور الاحترافي مع ميزة الزوم الداخلي للسكنات
+   ========================================================================= */
+
+.main-preview-viewport {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #0f172a; 
+  border-radius: 12px;
+  border: 1px solid #334155;
+  overflow: hidden; 
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  margin-bottom: 15px;
+  position: relative;
+  cursor: crosshair; 
+  will-change: transform;
+}
+
+/* تلميح الزوم الأسفل */
+.zoom-hint {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  font-size: 0.8rem;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+  z-index: 10;
+}
+
+/* الصورة القابلة للتكبير */
+.zoomable-skin-img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain; 
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  transition: transform 0.1s ease-out; 
+}
+
+/* تأثير التكبير القوي فور دخول الماوس على الصورة لقراءة السكنات */
+.main-preview-viewport:hover .zoomable-skin-img {
+  transform: scale(2.5); 
+}
+
+/* شريط المصغرات */
+.thumbnails-horizontal-rack {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 5px 0;
+}
+
+.rack-thumb-item {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  border: 2px solid #cbd5e1;
+  background: #ffffff;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.rack-thumb-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rack-thumb-item:hover {
+  transform: translateY(-2px);
+  border-color: #94a3b8;
+}
+
+.rack-thumb-item.selected-rack-item {
+  border-color: #2563eb;
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 8px 16px rgba(37, 99, 235, 0.2);
+}
+
+/* ==========================================================================
+   معلومات الحساب
+   ========================================================================== */
+
+.info-main-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: fit-content;
+}
+
+.account-main-title {
+  font-size: 1.6rem;
+  color: #1e293b;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.price-container-box {
+  background: #fef2f2;
+  border-radius: 8px;
+  padding: 15px;
+  border: 1px solid #fee2e2;
+}
+
+.price-label {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.price-value-amount {
+  margin: 5px 0 0 0;
+  font-size: 2rem;
+  color: #dd5246;
+  font-weight: 900;
+}
+
+.price-value-amount .mad-curr {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.description-rich-box {
+  text-align: right;
+}
+
+.desc-header-title {
+  font-size: 1.1rem;
+  color: #1e293b;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+.desc-text-body {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.7;
+  font-weight: 600;
+  margin: 0;
+  white-space: pre-line;
+}
+
+.direct-whatsapp-action-btn {
+  font-family: 'Cairo', sans-serif;
+  background: #22c55e;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(34, 197, 94, 0.2);
+  transition: all 0.2s ease;
+  margin-top: 10px;
+}
+
+.direct-whatsapp-action-btn:hover {
+  background: #16a34a;
+  transform: translateY(-1px);
+}
+
+.loader {
+  font-family: 'Cairo', sans-serif;
+  text-align: center;
+  padding: 50px;
+  color: #64748b;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   التجاوب الذكي مع الموبايل (Responsive Design)
+   ========================================================================== */
+@media (max-width: 850px) {
+  .details-container {
+    padding: 15px 12px; 
+  }
+  
+  .details-layout {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .main-preview-viewport {
+    aspect-ratio: 16 / 9; 
+    margin-bottom: 12px;
+  }
+  
+  .info-main-card {
+    height: auto;
+    padding: 20px;
+  }
+  
+  .zoom-hint {
+    font-size: 0.65rem;
+    padding: 3px 6px;
+    bottom: 6px;
+    left: 6px;
+  }
+
+  .rack-thumb-item {
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+  }
+  
+  .account-main-title {
+    font-size: 1.25rem;
+    padding: 0 2px;
+  }
+  
+  .price-value-amount {
+    font-size: 1.5rem;
+  }
+}

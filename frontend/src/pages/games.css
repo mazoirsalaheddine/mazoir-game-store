@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+
+.games-container {
+  font-family: 'Cairo', sans-serif;
+  background-color: #f0f2f5;
+  min-height: 100vh;
+  padding: 20px 5%;
+  box-sizing: border-box;
+  direction: rtl; /* ضمان ترتيب العناصر بالكامل من اليمين لليستار */
+}
+
+.section-header {
+  text-align: right;
+  margin-bottom: 15px;
+}
+
+.section-title {
+  color: #1e293b;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.filter-container {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.game-filter-select {
+  font-family: 'Cairo', sans-serif;
+  width: 100%;
+  padding: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1e293b;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+}
+
+/* تحويل النظام إلى Grid متناسق يملأ الشاشة حسب حجمها */
+.listings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)); /* يفتح كروت عريضة جنب بعضها في الشاشات الكبيرة */
+  gap: 20px;
+  width: 100%;
+}
+
+/* الكارد النظيف بستايل الصور المرفوعة */
+.listing-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+}
+
+.listing-top-bar {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 8px;
+}
+
+.listing-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 12px;
+}
+
+
+.listing-date {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.listing-body {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+}
+
+.listing-info {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  flex: 1;
+}
+
+.listing-price {
+  font-size: 1.3rem;
+  color: #dd5246;
+  font-weight: 800;
+  margin: 0 0 5px 0;
+}
+
+.listing-price .currency {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.listing-title {
+  font-size: 1.1rem;
+  color: #1e293b;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+}
+
+.listing-meta {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 0;
+  font-weight: 600;
+}
+
+.listing-image-wrapper {
+  width: 115px;
+  height: 115px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  background-color: #f1f5f9;
+  flex-shrink: 0;
+}
+
+.listing-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-count-badge {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.listing-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 12px;
+}
+
+.details-action-btn {
+  font-family: 'Cairo', sans-serif;
+  flex: 2; /* تأخذ مساحة أكبر */
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.details-action-btn:hover {
+  background: #1d4ed8;
+}
+
+/* ستايل زر اللايك التفاعلي (Facebook Style) */
+.fb-like-btn {
+  font-family: 'Cairo', sans-serif;
+  flex: 1;
+  background: #f1f5f9;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fb-like-btn:hover {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+/* التصميم والحالة عند الضغط على اللايك وتفعيله */
+.fb-like-btn.liked {
+  background: #e7f3ff;
+  color: #1877f2; /* الأزرق الأصلي لفيسبوك */
+  border-color: #1877f2;
+}
+
+.admin-delete-btn {
+  font-family: 'Cairo', sans-serif;
+  flex: 1;
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-delete-btn:hover {
+  background: #dc2626;
+  color: white;
+}
+
+/* تحسين العرض للموبايل لكي يتناسب تماماً تلقائياً */
+@media (max-width: 500px) {
+  .listings-grid {
+    grid-template-columns: 1fr; /* كارت واحد عريض يملأ الشاشة في الموبايل */
+  }
+  .listing-title { font-size: 1rem; }
+  .listing-price { font-size: 1.15rem; }
+  .details-action-btn, .fb-like-btn, .admin-delete-btn {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+}
+
+.loader {
+  font-family: 'Cairo', sans-serif;
+  text-align: center;
+  padding: 50px;
+  color: #64748b;
+  font-weight: 700;
+}

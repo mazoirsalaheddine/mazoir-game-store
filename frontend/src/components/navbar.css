@@ -1,0 +1,121 @@
+/* --- الإعدادات العامة --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Comic Sans MS, 'Segoe UI', sans-serif;
+    /* Comic Sans MS */
+}
+
+body {
+    background: #ffffff;
+    padding-top: 70px; /* المسافة التي يتركها النافبار للمحتوى */
+}
+
+/* --- الـ Navbar الرئيسي --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 0 7%; 
+    height: 70px;  /* تحديد ارتفاع ثابت للنافبار */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    
+    /* 🟢 كجعل كلشي يبدا من اليمين لليسر */
+    direction: rtl; 
+}
+
+.logo {
+    color: #1e293b;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* --- الروابط في وضع الشاشة الكبيرة --- */
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #64748b;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #22c55e;
+}
+
+.register-links {
+    background: #22c55e;
+    color: white !important;
+    padding: 8px 20px !important;
+    border-radius: 6px;
+}
+
+.logout-btn {
+    background: #fee2e2;
+    color: #ef4444;
+    border: 1px solid #fecaca;
+    padding: 7px 15px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.menu-btn {
+    display: none;
+    font-size: 25px;
+    color: #1e293b;
+    cursor: pointer;
+}
+
+
+/* --- تعديل الموبايل ليتوافق مع اليمين لليسر --- */
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 70px; 
+        
+        /* 🟢 قلبنا القائمة تخرج من اليمين عوض اليسار */
+        right: -100%; 
+        left: auto;
+        
+        background: white;
+        width: 250px;
+        height: calc(100vh - 70px); 
+        flex-direction: column;
+        padding: 30px;
+        gap: 30px;
+        transition: 0.3s ease-in-out;
+        
+        /* 🟢 تعديل الحواف والظلال لتناسب اليمين */
+        border-right: 1px solid #e2e8f0;
+        border-left: none;
+        box-shadow: 5px 5px 15px rgba(0,0,0,0.05);
+        display: flex; 
+    }
+
+    .nav-links.active {
+        /* 🟢 فاش يتحل المنيو يبان ف اليمين نيشان */
+        right: 0;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+}
