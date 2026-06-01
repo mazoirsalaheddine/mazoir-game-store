@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaWhatsapp, FaFacebookF, FaInstagram } from 'react-icons/fa'; // استيراد الأيقونات الرسمية
-import './Contact.css'; 
+import "./contact.css";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
