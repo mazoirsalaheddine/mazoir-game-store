@@ -28,13 +28,18 @@ function Login() {
     setErrors({});
 
     try {
-      const res = await axios.post("http://127.0.0.1:8000/api/login", form);
+      // ✅ هنا عطيناه الرابط كامل مكمول أونلاين بلا ما نحتاجو لإعدادات baseURL ف ملف آخور
+      const res = await axios.post("https://salahshoop.infinityfreeapp.com/api/login", form);
+      
       // ✅ نجاح تسجيل الدخول
       toast.success("✅ تم تسجيل الدخول بنجاح! جاري تحويلك...");
+      
       // تخزين بيانات المستخدم والتوكن
       localStorage.setItem("user", JSON.stringify(res.data.user));
+      
       // إذا كان الباكيند يرسل Token، يفضل تخزينه أيضاً
       if(res.data.token) localStorage.setItem("token", res.data.token);
+      
       setTimeout(() => {
         navigate("/");
         window.location.reload(); // لتحديث الحالة العامة للموقع (Header مثلاً)

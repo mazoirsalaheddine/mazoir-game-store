@@ -45,7 +45,7 @@ function Register() {
     if (avatar) data.append("avatar", avatar);
 
     try {
-      await axios.post("http://127.0.0.1:8000/api/register", data, {
+      await axios.post("https://salahshoop.infinityfreeapp.com/api/register", data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
