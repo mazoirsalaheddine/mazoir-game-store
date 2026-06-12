@@ -1,98 +1,101 @@
-/* Container l-kbir */
+/* Container l-kbir - rj3nah sghir chwiya f l-9yas */
 .contact-container {
-    max-width: 1100px;
-    margin: 60px auto;
-    padding: 20px;
+    max-width: 950px; /* n9asna l-3ard bach tji majmou3a */
+    margin: 40px auto;
+    padding: 15px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #fff;
+    color: #ffffff; /* l-lon l-byad l koutchi */
 }
 
 /* l-Ounwan l-rayissi */
 .contact-title {
     text-align: center;
-    font-size: 2.2rem;
-    color: #a855f7; /* Purple Glow */
-    margin-bottom: 40px;
-    text-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+    font-size: 1.8rem; /* sghir chwiya */
+    color: #ffffff; /* rj3inah b l-byad */
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
 }
 
 /* l-Wrapper li jame3 l-jihatine */
 .contact-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 40px;
+    grid-template-columns: 1fr 1.3fr; /* tnaso9 sghir w majmou3 */
+    gap: 25px; /* sgharna l-khwa li binatkoum */
 }
 
 /* 1. Jihat l-Social Media (Left Column) */
 .social-section {
     background: linear-gradient(145deg, #1e1e2f, #151522);
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    padding: 25px; /* n9asna l-padding bach tkhfaf */
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(147, 51, 234, 0.2);
     display: flex;
     flex-direction: column;
 }
 
 .social-section h3 {
-    font-size: 1.6rem;
-    color: #3b82f6; /* Blue Accent */
-    margin-bottom: 15px;
+    font-size: 1.3rem;
+    color: #ffffff; /* rj3inah b l-byad */
+    margin-bottom: 12px;
 }
 
 .social-section p {
-    color: #9ca3af;
-    line-height: 1.6;
-    margin-bottom: 30px;
+    color: #ffffff; /* klam b l-byad */
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    opacity: 0.95;
 }
 
 /* l-Rawabit dyal l-Social */
 .social-links {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 12px; /* sgharna l-fara9 */
 }
 
 .social-link {
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding: 15px;
+    gap: 12px;
+    padding: 12px; /* sgharna l-wsa3iyya */
     background: #11111b;
-    border-radius: 10px;
-    color: #fff;
+    border-radius: 8px;
+    color: #ffffff;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 0.9rem; /* tsghir l-ktaba */
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .social-link span {
     font-weight: bold;
+    color: #ffffff;
 }
 
 /* t-Whouj khass b kol icon */
 .react-social-icon {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 .social-link.whatsapp:hover {
     border-color: #22c55e;
-    box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+    box-shadow: 0 0 12px rgba(34, 197, 94, 0.3);
     background: rgba(34, 197, 94, 0.05);
 }
 .social-link.whatsapp .react-social-icon { color: #22c55e; }
 
 .social-link.facebook:hover {
     border-color: #3b82f6;
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
     background: rgba(59, 130, 246, 0.05);
 }
 .social-link.facebook .react-social-icon { color: #3b82f6; }
 
 .social-link.instagram:hover {
     border-color: #ec4899;
-    box-shadow: 0 0 15px rgba(236, 72, 153, 0.3);
+    box-shadow: 0 0 12px rgba(236, 72, 153, 0.3);
     background: rgba(236, 72, 153, 0.05);
 }
 .social-link.instagram .react-social-icon { color: #ec4899; }
@@ -101,38 +104,38 @@
 /* 2. Jihat l-Formulaire (Right Column) */
 .form-section {
     background: #11111b;
-    padding: 40px;
-    border-radius: 16px;
+    padding: 25px; /* n9asna padding bach tji compact */
+    border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 .form-section h3 {
-    font-size: 1.6rem;
-    margin-bottom: 25px;
-    color: #fff;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: #ffffff; /* b l-byad */
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 15px; /* sgharna l-fara9at */
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
-    color: #9ca3af;
-    font-size: 0.95rem;
+    margin-bottom: 6px;
+    color: #ffffff; /* l-byad */
+    font-size: 0.85rem;
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 14px;
+    padding: 10px 12px; /* sgharna l-khwa d l-wost */
     background: #1e1e2f;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    color: #fff;
-    font-size: 1rem;
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 0.95rem;
     transition: all 0.3s ease;
 }
 
@@ -140,26 +143,26 @@
 .form-group textarea:focus {
     outline: none;
     border-color: #a855f7;
-    box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+    box-shadow: 0 0 8px rgba(168, 85, 247, 0.3);
 }
 
-/* Boutona dyal l-Irsal */
+/* Boutona dyal l-Irsal - sghira w n9iya */
 .submit-btn {
     width: 100%;
-    padding: 14px;
+    padding: 12px;
     background: linear-gradient(90deg, #8b5cf6, #3b82f6);
-    color: #fff;
+    color: #ffffff;
     border: none;
-    border-radius: 8px;
-    font-size: 1.05rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .submit-btn:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
 }
 
 .submit-btn:disabled {
@@ -168,13 +171,13 @@
     cursor: not-allowed;
 }
 
-/* l-Alerts dyal l-khataae wla l-Najah */
+/* l-Alerts */
 .alert-message {
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 
@@ -190,16 +193,28 @@
     color: #f87171;
 }
 
-/* Responsive dyal t-Lfnat */
+/* 📱 Responsive dyal t-Lfnat (M9ad 100% l talifoun) */
 @media (max-width: 768px) {
     .contact-wrapper {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* rj3at column whda */
+        gap: 20px;
     }
     .contact-container {
-        margin: 20px auto;
-        padding: 10px;
+        margin: 10px auto;
+        padding: 8px;
+    }
+    .contact-title {
+        font-size: 1.5rem; /* sgharna l-ounwan ktr f l-portable */
+        margin-bottom: 20px;
     }
     .social-section, .form-section {
-        padding: 25px;
+        padding: 18px; /* padding sghir bach mayfoutch l-chachate */
+    }
+    .social-link {
+        padding: 10px; /* sgharna hna f l-mobile */
+        font-size: 0.85rem;
+    }
+    .form-group input, .form-group textarea {
+        padding: 10px; /* compact ktr */
     }
 }
