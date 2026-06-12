@@ -65,7 +65,8 @@ function AccountDetails() {
           >
             {activeImage ? (
               <img 
-                src={`http://127.0.0.1:8000/storage/${activeImage}`} 
+                /* 🌐 هنا تدار التعديل: القراءة مباشرة من الـ Storage ديال Railway بالـ HTTPS */
+                src={`https://mazoir-game-store-production.up.railway.app/storage/${activeImage}`} 
                 alt={account.game_name} 
                 className="zoomable-skin-img" 
                 style={zoomStyle}
@@ -85,7 +86,8 @@ function AccountDetails() {
                   className={`rack-thumb-item ${activeImage === img ? "selected-rack-item" : ""}`}
                   onClick={() => setActiveImage(img)}
                 >
-                  <img src={`http://127.0.0.1:8000/storage/${img}`} alt={`thumb-${index}`} />
+                  {/* 🌐 تعديل رابط الصور المصغرة أيضاً ليعمل أونلاين بشكل صحيح */}
+                  <img src={`https://mazoir-game-store-production.up.railway.app/storage/${img}`} alt={`thumb-${index}`} />
                 </div>
               ))}
             </div>
