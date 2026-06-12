@@ -22,7 +22,8 @@ function Games() {
   });
 
   useEffect(() => {
-    axios.get("https://mazoir-game-store.vercel.app/api/game-accounts")
+    // 🌐 جلب البيانات من السيرفر الحقيقي فـ Railway
+    axios.get("https://mazoir-game-store-production.up.railway.app/api/game-accounts")
       .then((res) => {
         setAccounts(res.data);
         setFilteredAccounts(res.data);
@@ -67,9 +68,9 @@ function Games() {
     setLikedAccounts(newLikedAccounts);
     localStorage.setItem("user_liked_cards", JSON.stringify(newLikedAccounts));
 
-    // 2. [إرسال للسيرفر ف الخلفية (Background)]
+    // 2. [إرسال للسيرفر ف الخلفية (Background) فـ Railway]
     try {
-      const res = await axios.post(`https://mazoir-game-store.vercel.app/api/game-accounts/${id}/like`, {
+      const res = await axios.post(`https://mazoir-game-store-production.up.railway.app/api/game-accounts/${id}/like`, {
         action: actionType
       });
       
@@ -84,7 +85,7 @@ function Games() {
       }
     } catch (err) {
       console.error("مشكل ف السيرفر، غنعاودو نرجعو الحالة الاصلية:", err);
-      alert("وقع خطأ ف السيرفر، يرجى إعادة المحاولة.");
+      alert(" وقع خطأ ف السيرفر، يرجى إعادة المحاولة.");
     }
   };
 
@@ -93,7 +94,8 @@ function Games() {
     const token = localStorage.getItem("token");
     if (window.confirm("واش بصح بغيتي تمسح هاد الحساب نهائياً؟")) {
       try {
-        await axios.delete(`https://mazoir-game-store.vercel.app/api/game-accounts/${id}`, {
+        // 🌐 رابط الحذف من سيرفر Railway المحمي
+        await axios.delete(`https://mazoir-game-store-production.up.railway.app/api/game-accounts/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setAccounts(prev => prev.filter(acc => acc.id !== id));
@@ -174,7 +176,6 @@ function Games() {
                   className={`fb-like-btn ${likedAccounts.includes(acc.id) ? "liked" : ""}`} 
                   onClick={(e) => toggleLike(acc.id, e)}
                 >
-                  {/* العداد يظهر هنا بشكل نظيف داخل الزر فقط */}
                   {likedAccounts.includes(acc.id) 
                     ? `👍 تم الإعجاب (${acc.likes_count || 0})` 
                     : `👍 لايك (${acc.likes_count || 0})`}
