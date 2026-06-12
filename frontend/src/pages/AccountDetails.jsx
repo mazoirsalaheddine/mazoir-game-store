@@ -14,7 +14,7 @@ function AccountDetails() {
   const [zoomStyle, setZoomStyle] = useState({ transformOrigin: "center center" });
 
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/api/game-accounts/${id}`)
+    axios.get(`https://mazoir-game-store-production.up.railway.app/api/game-accounts/${id}`)
       .then((res) => {
         setAccount(res.data);
         if (res.data.images && res.data.images.length > 0) {

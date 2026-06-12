@@ -1,0 +1,205 @@
+/* Container l-kbir */
+.contact-container {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+}
+
+/* l-Ounwan l-rayissi */
+.contact-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #a855f7; /* Purple Glow */
+    margin-bottom: 40px;
+    text-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+}
+
+/* l-Wrapper li jame3 l-jihatine */
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+}
+
+/* 1. Jihat l-Social Media (Left Column) */
+.social-section {
+    background: linear-gradient(145deg, #1e1e2f, #151522);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(147, 51, 234, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.social-section h3 {
+    font-size: 1.6rem;
+    color: #3b82f6; /* Blue Accent */
+    margin-bottom: 15px;
+}
+
+.social-section p {
+    color: #9ca3af;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* l-Rawabit dyal l-Social */
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: #11111b;
+    border-radius: 10px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.social-link span {
+    font-weight: bold;
+}
+
+/* t-Whouj khass b kol icon */
+.react-social-icon {
+    font-size: 1.5rem;
+}
+
+.social-link.whatsapp:hover {
+    border-color: #22c55e;
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+    background: rgba(34, 197, 94, 0.05);
+}
+.social-link.whatsapp .react-social-icon { color: #22c55e; }
+
+.social-link.facebook:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+    background: rgba(59, 130, 246, 0.05);
+}
+.social-link.facebook .react-social-icon { color: #3b82f6; }
+
+.social-link.instagram:hover {
+    border-color: #ec4899;
+    box-shadow: 0 0 15px rgba(236, 72, 153, 0.3);
+    background: rgba(236, 72, 153, 0.05);
+}
+.social-link.instagram .react-social-icon { color: #ec4899; }
+
+
+/* 2. Jihat l-Formulaire (Right Column) */
+.form-section {
+    background: #11111b;
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.form-section h3 {
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+    color: #fff;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #9ca3af;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 14px;
+    background: #1e1e2f;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #a855f7;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+/* Boutona dyal l-Irsal */
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+}
+
+.submit-btn:disabled {
+    background: #374151;
+    color: #9ca3af;
+    cursor: not-allowed;
+}
+
+/* l-Alerts dyal l-khataae wla l-Najah */
+.alert-message {
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.alert-message.success {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid #22c55e;
+    color: #4ade80;
+}
+
+.alert-message.error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid #ef4848;
+    color: #f87171;
+}
+
+/* Responsive dyal t-Lfnat */
+@media (max-width: 768px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+    .contact-container {
+        margin: 20px auto;
+        padding: 10px;
+    }
+    .social-section, .form-section {
+        padding: 25px;
+    }
+}

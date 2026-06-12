@@ -8,7 +8,7 @@ function NewsDetails() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/api/articles/${slug}`)
+    axios.get(`https://mazoir-game-store-production.up.railway.app/api/articles/${slug}`)
       .then(res => {
         setArticle(res.data);
         setLoading(false);

@@ -151,7 +151,7 @@ function Games() {
               <div className="listing-image-wrapper">
                 {acc.images && acc.images.length > 0 ? (
                   <>
-                    <img src={`http://127.0.0.1:8000/storage/${acc.images[0]}`} alt={acc.game_name} />
+                    <img src={`https://mazoir-game-store-production.up.railway.app/storage/${acc.images[0]}`} alt={acc.game_name} />
                     <span className="image-count-badge">📷 {acc.images.length}</span>
                   </>
                 ) : (

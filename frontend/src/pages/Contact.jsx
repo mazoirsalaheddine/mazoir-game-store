@@ -22,7 +22,7 @@ export default function Contact() {
     setStatus({ success: null, message: '' });
 
     try {
-      const response = await fetch('http://localhost:8000/api/contact', {
+      const response = await fetch('https://mazoir-game-store-production.up.railway.app/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
