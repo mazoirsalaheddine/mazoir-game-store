@@ -153,15 +153,9 @@ function Games() {
               <div className="listing-image-wrapper">
                 {acc.images && acc.images.length > 0 ? (
                   <>
-                    {/* هنا فين تدار التعديل الذكي باش يطير رابط الـ localhost ويعوضو بـ Railway المشفر والآمن */}
+                    {/* الكود النظيف والمباشر لقراءة الصور أونلاين عبر الـ HTTPS */}
                     <img 
-                      src={
-                        acc.images[0].startsWith('http://127.0.0.1:8000')
-                          ? acc.images[0].replace('http://127.0.0.1:8000', 'https://mazoir-game-store-production.up.railway.app')
-                          : acc.images[0].startsWith('http')
-                            ? acc.images[0]
-                            : `https://mazoir-game-store-production.up.railway.app/storage/${acc.images[0]}`
-                      } 
+                      src={`https://mazoir-game-store-production.up.railway.app/storage/${acc.images[0]}`} 
                       alt={acc.game_name} 
                     />
                     <span className="image-count-badge">📷 {acc.images.length}</span>

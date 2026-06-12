@@ -17,6 +17,11 @@ use App\Http\Controllers\ContactController;
 |
 */
 
+use Illuminate\Support\Facades\Artisan;
+
+if (!file_exists(public_path('storage'))) {
+    Artisan::call('storage:link');
+}
 // ================= 🔐 روابط الـ Authentication العامة =================
 Route::post('/login', [AuthController::class, 'login_post']);
 Route::post('/register', [AuthController::class, 'registration_post']);
