@@ -93,7 +93,7 @@ function Games() {
     const token = localStorage.getItem("token");
     if (window.confirm("واش بصح بغيتي تمسح هاد الحساب نهائياً؟")) {
       try {
-        await axios.delete(`http://127.0.0.1:8000/api/game-accounts/${id}`, {
+        await axios.delete(`https://mazoir-game-store.vercel.app/api/game-accounts/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setAccounts(prev => prev.filter(acc => acc.id !== id));
