@@ -1,147 +1,201 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import './addAccount.css';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "./games.css";
 
-const AddAccount = () => {
-    const [formData, setFormData] = useState({
-        game_name: '',
-        whatsapp: '',
-        price: '',
-        description: '',
+function Games() {
+  const [accounts, setAccounts] = useState([]);
+  const [filteredAccounts, setFilteredAccounts] = useState([]);
+  const [selectedGame, setSelectedGame] = useState("");
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  // جلب قائمة اللايكات اللي دارها هاد المستخدم من الـ LocalStorage باش نعقلو عليه وميديرش كثر من لايك
+  const [likedAccounts, setLikedAccounts] = useState(() => {
+    const savedLikes = localStorage.getItem("user_liked_cards");
+    return savedLikes ? JSON.parse(savedLikes) : [];
+  });
+
+  const [user, setUser] = useState(() => {
+    const savedUser = localStorage.getItem("user");
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
+
+  useEffect(() => {
+    // 🌐 جلب البيانات من السيرفر الحقيقي فـ Railway
+    axios.get("https://mazoir-game-store-production.up.railway.app/api/game-accounts")
+      .then((res) => {
+        setAccounts(res.data);
+        setFilteredAccounts(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching accounts:", err);
+        setLoading(false);
+      });
+  }, []);
+
+  const handleFilterChange = (e) => {
+    const game = e.target.value;
+    setSelectedGame(game);
+    setFilteredAccounts(game === "" ? accounts : accounts.filter(acc => acc.game_name === game));
+  };
+
+  // دالة اللايك الطائرة والسريعة (Optimistic UI Update)
+  const toggleLike = async (id, e) => {
+    e.stopPropagation();
+    
+    const hasLiked = likedAccounts.includes(id);
+    const actionType = hasLiked ? 'unlike' : 'like';
+
+    // 1. [تحديث فوري ف الشاشة] - كنزيدو أو ننقصو ف البلاصة بلا ما نتسناو السيرفر باش تحس بالسرعة
+    const updatedAccounts = accounts.map(acc => {
+      if (acc.id === id) {
+        const currentLikes = acc.likes_count || 0;
+        return { 
+          ...acc, 
+          likes_count: actionType === 'like' ? currentLikes + 1 : Math.max(0, currentLikes - 1) 
+        };
+      }
+      return acc;
     });
-    const [images, setImages] = useState([]);
-    const [previews, setPreviews] = useState([]);
-    const [loading, setLoading] = useState(false);
 
-    const handleInputChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+    setAccounts(updatedAccounts);
+    setFilteredAccounts(selectedGame === "" ? updatedAccounts : updatedAccounts.filter(acc => acc.game_name === selectedGame));
 
-    const handleFileChange = (e) => {
-        const files = Array.from(e.target.files);
-        setImages(files);
+    // تحديث الـ LocalStorage والـ State للمستخدم فوراً لمنع التكرار
+    let newLikedAccounts = hasLiked ? likedAccounts.filter(accId => accId !== id) : [...likedAccounts, id];
+    setLikedAccounts(newLikedAccounts);
+    localStorage.setItem("user_liked_cards", JSON.stringify(newLikedAccounts));
 
-        // إنشاء روابط المعاينة للصور المحددة
-        const previewUrls = files.map(file => URL.createObjectURL(file));
-        setPreviews(previewUrls);
-    };
+    // 2. [إرسال للسيرفر ف الخلفية (Background) فـ Railway]
+    try {
+      const res = await axios.post(`https://mazoir-game-store-production.up.railway.app/api/game-accounts/${id}/like`, {
+        action: actionType
+      });
+      
+      // إذا رجع السيرفر داتا حقيقية ومختلفة لسبب ما، كنعاودو نقادوها بدقة
+      if (res.data.success) {
+        setAccounts(prevAccounts => prevAccounts.map(acc => {
+          if (acc.id === id) {
+            return { ...acc, likes_count: res.data.likes_count };
+          }
+          return acc;
+        }));
+      }
+    } catch (err) {
+      console.error("مشكل ف السيرفر، غنعاودو نرجعو الحالة الاصلية:", err);
+      alert(" وقع خطأ ف السيرفر، يرجى إعادة المحاولة.");
+    }
+  };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setLoading(true);
-
-        const data = new FormData();
-        data.append('game_name', formData.game_name);
-        data.append('whatsapp', formData.whatsapp);
-        data.append('price', formData.price);
-        data.append('description', formData.description);
-
-        // إضافة الصور للمصفوفة باسم 'images[]' المتوافق مع الـ Backend
-        images.forEach((file) => {
-            data.append('images[]', file);
+  const handleDelete = async (id, e) => {
+    e.stopPropagation();
+    const token = localStorage.getItem("token");
+    if (window.confirm("واش بصح بغيتي تمسح هاد الحساب نهائياً؟")) {
+      try {
+        // 🌐 رابط الحذف من سيرفر Railway المحمي
+        await axios.delete(`https://mazoir-game-store-production.up.railway.app/api/game-accounts/${id}`, {
+          headers: { Authorization: `Bearer ${token}` }
         });
+        setAccounts(prev => prev.filter(acc => acc.id !== id));
+        setFilteredAccounts(prev => prev.filter(acc => acc.id !== id));
+        alert("تم الحذف بنجاح.");
+      } catch (error) {
+        alert("خطأ في الصلاحيات.");
+        console.log(error);
+      }
+    }
+  };
 
-        try {
-            const res = await axios.post('https://mazoir-game-store-production.up.railway.app/api/game-accounts', data, {
-                headers: { 'Content-Type': 'multipart/form-data' }
-            });
+  const formatListingDate = (dateString) => {
+    if (!dateString) return "قبل قليل";
+    const createdDate = new Date(dateString);
+    const today = new Date();
+    const yesterday = new Date();
+    yesterday.setDate(today.getDate() - 1);
+    if (createdDate.toDateString() === today.toDateString()) return "اليوم";
+    if (createdDate.toDateString() === yesterday.toDateString()) return "أمس";
+    return createdDate.toLocaleDateString("fr-FR").replace(/\//g, "-");
+  };
 
-            if (res.status === 201) {
-                alert("✅ تم رفع الحساب بنجاح!");
-                // إعادة تعيين الفورم للحالة الأصلية
-                setFormData({ game_name: '', whatsapp: '', price: '', description: '' });
-                setPreviews([]);
-                setImages([]);
-            }
-        } catch (error) {
-            console.error("Error details:", error.response?.data);
-            alert("❌ خطأ: " + (error.response?.data?.message || "تعذر الاتصال بالسيرفر"));
-        } finally {
-            setLoading(false);
-        }
-    };
+  if (loading) return <div className="loader">جاري التحميل...</div>;
 
-    return (
-        <div className="add-container" dir="rtl">
-            <div className="form-card">
-                <h2>إضافة عرض جديد 🎮</h2>
-                <form onSubmit={handleSubmit}>
-                    
-                    <div className="row">
-                        <div className="input-group">
-                            <label>اسم اللعبة</label>
-                            <select name="game_name" value={formData.game_name} onChange={handleInputChange} required>
-                                <option value="">اختر اللعبة</option>
-                                <option value="Free Fire">Free Fire</option>
-                                <option value="PES">eFootball (PES)</option>
-                            </select>
-                        </div>
+  return (
+    <div className="games-container" dir="rtl">
+      <div className="section-header">
+        <h2 className="section-title">عروض الحسابات</h2>
+      </div>
 
-                        <div className="input-group">
-                            <label>رقم الواتساب</label>
-                            <input 
-                                type="tel" 
-                                name="whatsapp" 
-                                placeholder="مثال: 0612345678" 
-                                value={formData.whatsapp} 
-                                onChange={handleInputChange} 
-                                required 
-                            />
-                        </div>
-                    </div>
+      <div className="filter-container">
+        <select className="game-filter-select" value={selectedGame} onChange={handleFilterChange}>
+          <option value="">كل الألعاب المتاحة</option>
+          <option value="Free Fire">Free Fire</option>
+          <option value="PES">eFootball (PES)</option>
+        </select>
+      </div>
 
-                    <div className="input-group">
-                        <label>الثمن (MAD)</label>
-                        <input 
-                            name="price" 
-                            type="number" 
-                            placeholder="حدد السعر بالدرهم" 
-                            value={formData.price} 
-                            onChange={handleInputChange} 
-                            required 
-                        />
-                    </div>
-                    
-                    <div className="input-group">
-                        <label>وصف الحساب</label>
-                        <textarea 
-                            name="description" 
-                            placeholder="اكتب تفاصيل الحساب (المميزات، السكنات، الأسلحة...)" 
-                            value={formData.description} 
-                            onChange={handleInputChange} 
-                            required
-                        ></textarea>
-                    </div>
-
-                    <div className="input-group">
-                        <label>صور الحساب</label>
-                        <div className="upload-box">
-                            <input type="file" multiple onChange={handleFileChange} accept="image/*" id="file-input" />
-                            <label htmlFor="file-input">📸 اضغط هنا لاختيار الصور</label>
-                        </div>
-                    </div>
-
-                    {previews.length > 0 && (
-                        <div className="preview-row">
-                            {previews.map((url, i) => (
-                                <div key={i} className="preview-item">
-                                    <img src={url} alt={`preview-${i}`} />
-                                </div>
-                            ))}
-                        </div>
-                    )}
-
-                    <button type="submit" className="submit-btn" disabled={loading}>
-                        {loading ? (
-                            <span className="spinner">جاري الرفع...</span>
-                        ) : (
-                            'نشر العرض الآن 🚀'
-                        )}
-                    </button>
-                </form>
+      <div className="listings-grid">
+        {filteredAccounts.map((acc) => (
+          <div className="listing-card" key={acc.id}>
+            
+            <div className="listing-top-bar">
+              <span className="listing-date">{formatListingDate(acc.created_at)}</span>
             </div>
-        </div>
-    );
-};
 
-export default AddAccount;
+            <div className="listing-body">
+              <div className="listing-info">
+                <h3 className="listing-price">{acc.price} <span className="currency">درهم</span></h3>
+                <h2 className="listing-title">{acc.game_name}</h2>
+                <p className="listing-meta">{acc.game_name} متوفر حالياً</p>
+              </div>
+
+              <div className="listing-image-wrapper">
+                {acc.images && acc.images.length > 0 ? (
+                  <>
+                    {/* الحل الذكي هنا: كيحيد أي رابط localhost قديم وكيعوضو بـ Railway لضمان الأمان الـ HTTPS */}
+                    <img 
+                      src={
+                        acc.images[0].startsWith('http')
+                          ? acc.images[0].replace('http://127.0.0.1:8000', 'https://mazoir-game-store-production.up.railway.app')
+                          : `https://mazoir-game-store-production.up.railway.app/storage/${acc.images[0]}`
+                      } 
+                      alt={acc.game_name} 
+                    />
+                    <span className="image-count-badge">📷 {acc.images.length}</span>
+                  </>
+                ) : (
+                  <div className="placeholder">🎮</div>
+                )}
+              </div>
+            </div>
+
+            <div className="listing-actions">
+              <button className="details-action-btn" onClick={() => navigate(`/games/${acc.id}`)}>
+                💬 عرض التفاصيل الكاملة
+              </button>
+
+              {user && user.role === 'admin' ? (
+                <button className="admin-delete-btn" onClick={(e) => handleDelete(acc.id, e)}>
+                  🗑️ مسح العرض ({acc.likes_count || 0})
+                </button>
+              ) : (
+                <button 
+                  className={`fb-like-btn ${likedAccounts.includes(acc.id) ? "liked" : ""}`} 
+                  onClick={(e) => toggleLike(acc.id, e)}
+                >
+                  {likedAccounts.includes(acc.id) 
+                    ? `👍 تم الإعجاب (${acc.likes_count || 0})` 
+                    : `👍 لايك (${acc.likes_count || 0})`}
+                </button>
+              )}
+            </div>
+
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default Games;
