@@ -22,7 +22,7 @@ function Games() {
   });
 
   useEffect(() => {
-    axios.get("http://127.0.0.1:8000/api/game-accounts")
+    axios.get("https://mazoir-game-store.vercel.app/api/game-accounts")
       .then((res) => {
         setAccounts(res.data);
         setFilteredAccounts(res.data);
@@ -69,7 +69,7 @@ function Games() {
 
     // 2. [إرسال للسيرفر ف الخلفية (Background)]
     try {
-      const res = await axios.post(`http://127.0.0.1:8000/api/game-accounts/${id}/like`, {
+      const res = await axios.post(`https://mazoir-game-store.vercel.app/api/game-accounts/${id}/like`, {
         action: actionType
       });
       
