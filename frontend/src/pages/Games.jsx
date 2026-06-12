@@ -153,7 +153,15 @@ function Games() {
               <div className="listing-image-wrapper">
                 {acc.images && acc.images.length > 0 ? (
                   <>
-                    <img src={`https://mazoir-game-store-production.up.railway.app/storage/${acc.images[0]}`} alt={acc.game_name} />
+                    {/* الحل الذكي هنا: كيحيد أي رابط localhost قديم وكيعوضو بـ Railway لضمان الأمان الـ HTTPS */}
+                    <img 
+                      src={
+                        acc.images[0].startsWith('http')
+                          ? acc.images[0].replace('http://127.0.0.1:8000', 'https://mazoir-game-store-production.up.railway.app')
+                          : `https://mazoir-game-store-production.up.railway.app/storage/${acc.images[0]}`
+                      } 
+                      alt={acc.game_name} 
+                    />
                     <span className="image-count-badge">📷 {acc.images.length}</span>
                   </>
                 ) : (
