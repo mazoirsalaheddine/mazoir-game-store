@@ -29,7 +29,7 @@ function Login() {
 
     try {
       // ✅ هنا عطيناه الرابط كامل مكمول أونلاين بلا ما نحتاجو لإعدادات baseURL ف ملف آخور
-      const res = await axios.post("https://salahshoop.infinityfreeapp.com/api/login", form);
+      const res = await axios.post("https://mazoir-game-store-production.up.railway.app/api/login", form);
       
       // ✅ نجاح تسجيل الدخول
       toast.success("✅ تم تسجيل الدخول بنجاح! جاري تحويلك...");

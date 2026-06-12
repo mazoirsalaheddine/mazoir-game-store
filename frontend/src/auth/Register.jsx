@@ -45,7 +45,7 @@ function Register() {
     if (avatar) data.append("avatar", avatar);
 
     try {
-      await axios.post("https://salahshoop.infinityfreeapp.com/api/register", data, {
+      await axios.post("https://mazoir-game-store-production.up.railway.app/api/register", data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
